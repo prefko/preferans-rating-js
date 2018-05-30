@@ -1,6 +1,6 @@
 {
 	"name": "preferans-rating-js",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "nodejs rating for preferans",
 	"engines": {
 		"node": ">=8.9"
@@ -33,6 +33,7 @@
 		"chai": "^4.1.2",
 		"mocha": "^5.1.1",
 		"nyc": "^11.7.3",
+		"rewire": "^4.0.1",
 		"sonarjs": "^1.0.0"
 	}
 }
