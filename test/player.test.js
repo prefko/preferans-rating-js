@@ -1,42 +1,42 @@
 const _ = require('lodash');
 const expect = require('chai').expect;
 
-const Player = require('../lib/player');
+const PrefRatingPlayer = require('../lib/player');
 
 describe('Player tests', function () {
 	it('Player should exist', function () {
-		expect(Player).to.exist;
+		expect(PrefRatingPlayer).to.exist;
 	});
 
 	describe('Player constructor tests', function () {
 		it('contructor should create object', function () {
-			expect(() => new Player()).to.throw();
-			expect(() => new Player(1000)).to.throw();
-			expect(() => new Player(1000, 50)).to.not.throw();
-			expect(new Player(1000, 50)).to.be.a('object');
+			expect(() => new PrefRatingPlayer()).to.throw();
+			expect(() => new PrefRatingPlayer(1000)).to.throw();
+			expect(() => new PrefRatingPlayer(1000, 50)).to.not.throw();
+			expect(new PrefRatingPlayer(1000, 50)).to.be.a('object');
 		});
 	});
 
 	describe('Player setter tests', function () {
 		it('setNewRating should work properly', function () {
-			expect(() => new Player(1000, 0).setNewRating()).to.throw();
-			expect(() => new Player(1000, 0).setNewRating(1100)).to.not.throw();
-			expect(new Player(1000, 0).setNewRating(1100)).to.be.a('object');
-			expect(new Player(1000, 0).setNewRating(1100).getChange()).to.equal(100);
-			expect(new Player(1000, 0).setNewRating(1100).getNewRating()).to.equal(1100);
+			expect(() => new PrefRatingPlayer(1000, 0).setNewRating()).to.throw();
+			expect(() => new PrefRatingPlayer(1000, 0).setNewRating(1100)).to.not.throw();
+			expect(new PrefRatingPlayer(1000, 0).setNewRating(1100)).to.be.a('object');
+			expect(new PrefRatingPlayer(1000, 0).setNewRating(1100).getChange()).to.equal(100);
+			expect(new PrefRatingPlayer(1000, 0).setNewRating(1100).getNewRating()).to.equal(1100);
 		});
 		it('setRatingChange should work properly', function () {
-			expect(() => new Player(1000, 0).setRatingChange()).to.throw();
-			expect(() => new Player(1000, 0).setRatingChange(100)).to.not.throw();
-			expect(new Player(1000, 0).setRatingChange(100)).to.be.a('object');
-			expect(new Player(1000, 0).setRatingChange(100).getChange()).to.equal(100);
-			expect(new Player(1000, 0).setRatingChange(100).getNewRating()).to.equal(1100);
+			expect(() => new PrefRatingPlayer(1000, 0).setRatingChange()).to.throw();
+			expect(() => new PrefRatingPlayer(1000, 0).setRatingChange(100)).to.not.throw();
+			expect(new PrefRatingPlayer(1000, 0).setRatingChange(100)).to.be.a('object');
+			expect(new PrefRatingPlayer(1000, 0).setRatingChange(100).getChange()).to.equal(100);
+			expect(new PrefRatingPlayer(1000, 0).setRatingChange(100).getNewRating()).to.equal(1100);
 		});
 	});
 
 	describe('Player getters tests', function () {
-		let p1 = new Player(1000, 50).setRatingChange(100);
-		let p2 = new Player(1100, 200).setRatingChange(-100);
+		let p1 = new PrefRatingPlayer(1000, 50).setRatingChange(100);
+		let p2 = new PrefRatingPlayer(1100, 200).setRatingChange(-100);
 
 		it('getScore should work properly', function () {
 			expect(p1.getScore()).to.equal(50);

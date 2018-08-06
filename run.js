@@ -2,14 +2,13 @@
 'use strict';
 
 const _ = require('lodash');
-const Player = require('./lib/player');
-const Rating = require('./lib/rating');
+const PrefRating = require('./lib/rating');
+const PrefRatingPlayer = PrefRating.Player;
 
-let p1 = new Player();
-let p2 = new Player();
-let p3 = new Player();
+let p1 = new PrefRatingPlayer(1000, 0);
+let p2 = new PrefRatingPlayer(1000, 0);
+let p3 = new PrefRatingPlayer(1000, 0);
 
-let r = new Rating();
+let r = new PrefRating(p1, p2, p3, 60);
 
-console.log();
-
+console.log(r);

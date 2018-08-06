@@ -4,3 +4,9 @@
 [![npm](https://img.shields.io/npm/dt/preferans-rating-js.svg)](https://www.npmjs.com/package/preferans-rating-js)
 
 preferans user rating
+
+### Usage
+
+    const PrefRating = require('preferans-rating-js');
+    const PrefRatingPlayer = PrefRating.Player;
+    ...
