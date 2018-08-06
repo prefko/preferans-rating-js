@@ -3,12 +3,12 @@ const expect = require('chai').expect;
 
 const PrefRatingPlayer = require('../lib/player');
 
-describe('Player tests', function () {
-	it('Player should exist', function () {
+describe('PrefRatingPlayer tests', function () {
+	it('PrefRatingPlayer should exist', function () {
 		expect(PrefRatingPlayer).to.exist;
 	});
 
-	describe('Player constructor tests', function () {
+	describe('PrefRatingPlayer constructor tests', function () {
 		it('contructor should create object', function () {
 			expect(() => new PrefRatingPlayer()).to.throw();
 			expect(() => new PrefRatingPlayer(1000)).to.throw();
@@ -17,7 +17,7 @@ describe('Player tests', function () {
 		});
 	});
 
-	describe('Player setter tests', function () {
+	describe('PrefRatingPlayer setter tests', function () {
 		it('setNewRating should work properly', function () {
 			expect(() => new PrefRatingPlayer(1000, 0).setNewRating()).to.throw();
 			expect(() => new PrefRatingPlayer(1000, 0).setNewRating(1100)).to.not.throw();
@@ -34,7 +34,7 @@ describe('Player tests', function () {
 		});
 	});
 
-	describe('Player getters tests', function () {
+	describe('PrefRatingPlayer getters tests', function () {
 		let p1 = new PrefRatingPlayer(1000, 50).setRatingChange(100);
 		let p2 = new PrefRatingPlayer(1100, 200).setRatingChange(-100);
 

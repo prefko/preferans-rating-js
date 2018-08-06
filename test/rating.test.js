@@ -8,12 +8,12 @@ let p1 = new PrefRatingPlayer(1152, -238);
 let p2 = new PrefRatingPlayer(1074, 112);
 let p3 = new PrefRatingPlayer(986, 126);
 
-describe('Rating tests', function () {
-	it('Rating should exist', function () {
+describe('PrefRating tests', function () {
+	it('PrefRating should exist', function () {
 		expect(PrefRating).to.exist;
 	});
 
-	describe('Rating constructor tests', function () {
+	describe('PrefRating constructor tests', function () {
 		let p1 = new PrefRatingPlayer(1152, -238);
 		let p2 = new PrefRatingPlayer(1074, 112);
 		let p3 = new PrefRatingPlayer(986, 126);
@@ -27,7 +27,7 @@ describe('Rating tests', function () {
 		});
 	});
 
-	describe('Rating calculation tests 1', function () {
+	describe('PrefRating calculation tests 1', function () {
 		let p1 = new PrefRatingPlayer(1152, -238);
 		let p2 = new PrefRatingPlayer(1074, 112);
 		let p3 = new PrefRatingPlayer(986, 126);
@@ -68,13 +68,11 @@ describe('Rating tests', function () {
 		});
 	});
 
-	describe('Rating calculation tests 2', function () {
+	describe('PrefRating calculation tests 2', function () {
 		let p1 = new PrefRatingPlayer(986, 126);
 		let p2 = new PrefRatingPlayer(1074, 112);
 		let p3 = new PrefRatingPlayer(1152, -238);
 		let rating = new PrefRating(p1, p2, p3, 60);
-
-		console.log(rating);
 
 		it('getRatings should work properly', function () {
 			expect(rating.getRatings()).to.deep.equal(
@@ -88,13 +86,11 @@ describe('Rating tests', function () {
 		});
 	});
 
-	describe('Rating calculation tests 3', function () {
+	describe('PrefRating calculation tests 3', function () {
 		let p1 = new PrefRatingPlayer(986, 120);
 		let p2 = new PrefRatingPlayer(1074, 120);
 		let p3 = new PrefRatingPlayer(1152, -240);
 		let rating = new PrefRating(p1, p2, p3, 60);
-
-		console.log(rating);
 
 		it('getRatings should work properly', function () {
 			expect(rating.getRatings()).to.deep.equal(
