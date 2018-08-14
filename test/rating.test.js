@@ -11,22 +11,32 @@ describe("PrefRating tests", function () {
 		let p1 = {username: "p1", oldRating: 1152, score: -238};
 		let p2 = {username: "p1", rating: 1074, score: 112};
 		let p3 = {username: "p1", oldRating: 986, score: 126};
-		it("contructor should create object", function () {
+		it("contructor should throw correctly for missing attributes", function () {
 			expect(() => new PrefRating()).to.throw();
 			expect(() => new PrefRating(p1)).to.throw();
 			expect(() => new PrefRating(p1, p2)).to.throw();
 			expect(() => new PrefRating(p1, p2, p3)).to.throw();
+		});
+		it("contructor should throw correctly for p1", function () {
 			expect(() => new PrefRating({oldRating: 1152, score: -238}, p2, p3)).to.throw();
 			expect(() => new PrefRating({username: "p1", score: -238}, p2, p3)).to.throw();
 			expect(() => new PrefRating({username: "p1", oldRating: 1152}, p2, p3)).to.throw();
+		});
+		it("contructor should throw correctly for p2", function () {
 			expect(() => new PrefRating(p1, {oldRating: 1152, score: -238}, p3)).to.throw();
 			expect(() => new PrefRating(p1, {username: "p2", score: -238}, p3)).to.throw();
 			expect(() => new PrefRating(p1, {username: "p2", oldRating: 1152}, p3)).to.throw();
+		});
+		it("contructor should throw correctly for p3", function () {
 			expect(() => new PrefRating(p1, p2, {oldRating: 1152, score: -238})).to.throw();
 			expect(() => new PrefRating(p1, p2, {username: "p3", score: -238})).to.throw();
 			expect(() => new PrefRating(p1, p2, {username: "p3", oldRating: 1152})).to.throw();
+		});
+		it("contructor should throw correctly", function () {
 			expect(() => new PrefRating(p1, p2, p3, true)).to.throw();
 			expect(() => new PrefRating(p1, p2, p3, "60")).to.throw();
+		});
+		it("contructor should create object", function () {
 			expect(() => new PrefRating(p1, p2, p3, 60)).to.not.throw();
 			expect(new PrefRating(p1, p2, p3, 60)).to.be.a("object");
 		});

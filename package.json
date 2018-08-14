@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/cope/preferans-rating-js#readme",
   "dependencies": {
+    "ajv": "^6.5.2",
     "lodash": "^4.17.10",
     "mathjs": "^5.1.0"
   },
