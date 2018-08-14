@@ -2,11 +2,10 @@
 "use strict";
 
 const PrefRating = require("./lib/rating");
-const PrefRatingPlayer = PrefRating.Player;
 
-let p1 = new PrefRatingPlayer(1000, 0);
-let p2 = new PrefRatingPlayer(1000, 0);
-let p3 = new PrefRatingPlayer(1000, 0);
+let p1 = {username: "p1", oldRating: 1152, rating: 1000, score: 0};
+let p2 = {username: "p1", oldRating: 1152, rating: 1000, score: 0};
+let p3 = {username: "p1", oldRating: 1152, rating: 1000, score: 0};
 
 let r = new PrefRating(p1, p2, p3, 60);
 
