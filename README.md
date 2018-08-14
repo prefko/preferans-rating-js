@@ -9,6 +9,6 @@ preferans user rating
 
 ### Usage
 
-    const PrefRating = require('preferans-rating-js');
+    const PrefRating = require("preferans-rating-js");
     const PrefRatingPlayer = PrefRating.Player;
     ...
