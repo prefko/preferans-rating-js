@@ -1,6 +1,6 @@
 {
 	"name": "preferans-rating-js",
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"description": "nodejs rating for preferans",
 	"engines": {
 		"node": ">=8.9"
@@ -28,7 +28,7 @@
 	},
 	"homepage": "https://github.com/cope/preferans-rating-js#readme",
 	"dependencies": {
-		"ajv": "^6.5.2",
+		"ajv": "^6.5.5",
 		"global": "^4.3.2",
 		"jsdoc": "^3.5.5",
 		"lodash": "^4.17.10",
