@@ -1,3 +1,7 @@
+// import {PrefRating} from '../lib/rating';
+// import {expect} from 'chai';
+// import 'mocha';
+
 const expect = require("chai").expect;
 
 const PrefRating = require("../lib/rating");
