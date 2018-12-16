@@ -72,13 +72,13 @@ const _c = (c1: number, c2: number): number | BigNumber | Fraction | Complex | M
 			.done(),
 	);
 const _calculateChanges = (p1: PrefPlayer, p2: PrefPlayer, p3: PrefPlayer, bula: number): any => {
-	let D: any = _calculateDs(p1, p2, p3, bula);
-	let T = _calculateTs(p1, p2, p3);
-	let N = _calculateNs(p1, p2, p3, bula);
+	const D: any = _calculateDs(p1, p2, p3, bula);
+	const T = _calculateTs(p1, p2, p3);
+	const N = _calculateNs(p1, p2, p3, bula);
 
-	let C12 = D.D12 + T.T12 + N.N12;
-	let C13 = D.D13 + T.T13 + N.N13;
-	let C23 = D.D23 + T.T23 + N.N23;
+	const C12 = D.D12 + T.T12 + N.N12;
+	const C13 = D.D13 + T.T13 + N.N13;
+	const C23 = D.D23 + T.T23 + N.N23;
 
 	return {
 		change1: _c(C12, C13),
