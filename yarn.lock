@@ -86,6 +86,16 @@
   version "4.1.7"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.7.tgz#1b8e33b61a8c09cbe1f85133071baa0dbf9fa71a"
 
+"@types/lodash@^4.14.119":
+  version "4.14.119"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.119.tgz#be847e5f4bc3e35e46d041c394ead8b603ad8b39"
+
+"@types/mathjs@^4.4.4":
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/@types/mathjs/-/mathjs-4.4.4.tgz#cfc50ec3d2596feec217d9ae19d0ac99b6a5e822"
+  dependencies:
+    decimal.js "^10.0.0"
+
 "@types/mocha@^5.2.5":
   version "5.2.5"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.5.tgz#8a4accfc403c124a0bafe8a9fc61a05ec1032073"
@@ -558,6 +568,10 @@ decamelize@^1.0.0, decamelize@^1.1.1:
 decimal.js@10.0.1:
   version "10.0.1"
   resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-10.0.1.tgz#d04b16b277f0f9af09671cee225c4882e8857c58"
+
+decimal.js@^10.0.0:
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-10.0.2.tgz#50fd0f9184139f543e5b84c97681534292deb640"
 
 decode-uri-component@^0.2.0:
   version "0.2.0"
@@ -1263,7 +1277,11 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
-lodash@^4.17.10, lodash@^4.17.5:
+lodash@^4.17.11:
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+
+lodash@^4.17.5:
   version "4.17.10"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
