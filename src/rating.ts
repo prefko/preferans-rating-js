@@ -2,45 +2,21 @@
 'use strict';
 
 /**
- * @typedef {Object} Player
- * @property {string} username Username
- * @property {number} score Score
- * @property {number} oldRating Previous rating
- * @property {number} [newRating] New rating
- */
-
-/**
  * @typedef {Object} Rating
  * @property {number} bula The game bula
- * @property {Player} p1 The 1st Player
- * @property {Player} p2 The 2nd Player
- * @property {Player} p3 The 3rd Player
+ * @property {PrefPlayer} p1 The 1st PrefPlayer
+ * @property {PrefPlayer} p2 The 2nd PrefPlayer
+ * @property {PrefPlayer} p3 The 3rd PrefPlayer
  */
 
-// import * as _ from 'lodash';
-import {isNumber} from 'lodash';
-
 import * as math from 'mathjs';
-import * as Ajv from 'ajv';
 import {BigNumber} from "mathjs";
 import {Fraction} from "mathjs";
 import {Complex} from "mathjs";
 import {MathArray} from "mathjs";
 import {Matrix} from "mathjs";
 
-const ajv = new Ajv({useDefaults: true});
-const _validatePlayer = ajv.compile({
-	type: 'object',
-	properties: {
-		username: {type: 'string'},
-		score: {type: 'integer'},
-		rating: {type: 'integer', minimum: 0},
-		oldRating: {type: 'integer', minimum: 0},
-	},
-	additionalProperties: false,
-	oneOf: [{required: ['rating']}, {required: ['oldRating']}],
-	required: ['username', 'score'],
-});
+import PrefPlayer from './player';
 
 /** @constant
  * @type {number}
@@ -48,7 +24,7 @@ const _validatePlayer = ajv.compile({
  */
 const MAGIC = 2.8;
 
-const _d = (p1: any, p2: any, bula: number): any =>
+const _d = (p1: PrefPlayer, p2: PrefPlayer, bula: number): any =>
 	math.round(
 		math
 			.chain(p1.score)
@@ -57,31 +33,31 @@ const _d = (p1: any, p2: any, bula: number): any =>
 			.done(),
 		3,
 	);
-const _calculateDs = (p1: any, p2: any, p3: any, bula: number): any => ({
+const _calculateDs = (p1: PrefPlayer, p2: PrefPlayer, p3: PrefPlayer, bula: number): any => ({
 	D12: _d(p1, p2, bula),
 	D13: _d(p1, p3, bula),
 	D23: _d(p2, p3, bula),
 });
 
-const _t = (p1: any, p2: any): number | BigNumber | Fraction | Complex | MathArray | Matrix =>
+const _t = (p1: PrefPlayer, p2: PrefPlayer): number | BigNumber | Fraction | Complex | MathArray | Matrix =>
 	math.round(
 		math
-			.chain(p2.oldRating)
-			.subtract(p1.oldRating)
+			.chain(p2.rating)
+			.subtract(p1.rating)
 			.multiply(MAGIC)
 			.divide(100)
 			.done(),
 		3,
 	);
 
-const _calculateTs = (p1: any, p2: any, p3: any): any => ({
+const _calculateTs = (p1: PrefPlayer, p2: PrefPlayer, p3: PrefPlayer): any => ({
 	T12: _t(p1, p2),
 	T13: _t(p1, p3),
 	T23: _t(p2, p3),
 });
 
-const _n = (p1: any, p2: any, bula: number): number => (p1.score > p2.score ? bula : p1.score < p2.score ? -bula : 0) / 100;
-const _calculateNs = (p1: any, p2: any, p3: any, bula: number): any => ({
+const _n = (p1: PrefPlayer, p2: PrefPlayer, bula: number): number => (p1.score > p2.score ? bula : p1.score < p2.score ? -bula : 0) / 100;
+const _calculateNs = (p1: PrefPlayer, p2: PrefPlayer, p3: PrefPlayer, bula: number): any => ({
 	N12: _n(p1, p2, bula),
 	N13: _n(p1, p3, bula),
 	N23: _n(p2, p3, bula),
@@ -95,7 +71,7 @@ const _c = (c1: number, c2: number): number | BigNumber | Fraction | Complex | M
 			.divide(2)
 			.done(),
 	);
-const _calculateChanges = (p1: any, p2: any, p3: any, bula: number): any => {
+const _calculateChanges = (p1: PrefPlayer, p2: PrefPlayer, p3: PrefPlayer, bula: number): any => {
 	let D: any = _calculateDs(p1, p2, p3, bula);
 	let T = _calculateTs(p1, p2, p3);
 	let N = _calculateNs(p1, p2, p3, bula);
@@ -111,57 +87,30 @@ const _calculateChanges = (p1: any, p2: any, p3: any, bula: number): any => {
 	};
 };
 
-/** Adjust the players rating.
- * @private
- * @memberof PrefRating
- * @param {Player} p - The player object
- */
-const _fixRatingAttributes = (p: any): any => {
-	p.oldRating = p.rating || p.oldRating;
-	delete p.rating;
-	return p;
-};
-
-const _validate = (p1: any, p2: any, p3: any, bula: number): void => {
-	if (!_validatePlayer(p1)) throw new Error('PrefRating::constructor:Player 1 invalid ' + p1);
-	if (!_validatePlayer(p2)) throw new Error('PrefRating::constructor:Player 2 invalid ' + p2);
-	if (!_validatePlayer(p3)) throw new Error('PrefRating::constructor:Player 3 invalid ' + p3);
-	if (!bula || !isNumber(bula)) throw new Error('PrefRating::constructor:No bula defined ' + bula);
-};
-
 /** This is the Preferans Rating main class. */
-class PrefRating {
-	p1: any;
-	p2: any;
-	p3: any;
-	bula: number;
+export default class PrefRating {
+	private _p1: PrefPlayer;
+	private _p2: PrefPlayer;
+	private _p3: PrefPlayer;
+	private _bula: number;
 
 	/** @constructor
-	 * @param {Player} p1 - 1st player object
-	 * @param {Player} p2 - 2nd player object
-	 * @param {Player} p3 - 3rd player object
+	 * @param {PrefPlayer} p1 - 1st player object
+	 * @param {PrefPlayer} p2 - 2nd player object
+	 * @param {PrefPlayer} p3 - 3rd player object
 	 * @param {number} bula - Game bula
 	 * @returns {object} PrefRating instance
 	 */
-	constructor(p1: any, p2: any, p3: any, bula: number) {
-		_validate(p1, p2, p3, bula);
-
-		p1 = _fixRatingAttributes(p1);
-		p2 = _fixRatingAttributes(p2);
-		p3 = _fixRatingAttributes(p3);
-
-		this.bula = bula;
-		this.p1 = p1;
-		this.p2 = p2;
-		this.p3 = p3;
+	constructor(p1: PrefPlayer, p2: PrefPlayer, p3: PrefPlayer, bula: number) {
+		this._p1 = p1;
+		this._p2 = p2;
+		this._p3 = p3;
+		this._bula = bula;
 
 		let {change1, change2, change3} = _calculateChanges(p1, p2, p3, bula);
-		this.p1.change = change1;
-		this.p2.change = change2;
-		this.p3.change = change3;
-		this.p1.newRating = this.p1.oldRating + change1;
-		this.p2.newRating = this.p2.oldRating + change2;
-		this.p3.newRating = this.p3.oldRating + change3;
+		this._p1.change = change1;
+		this._p2.change = change2;
+		this._p3.change = change3;
 
 		return this;
 	}
@@ -171,12 +120,10 @@ class PrefRating {
 	 */
 	getRatings(): any {
 		return {
-			bula: this.bula,
-			p1: this.p1,
-			p2: this.p2,
-			p3: this.p3,
+			bula: this._bula,
+			p1: this._p1.getObject(),
+			p2: this._p2.getObject(),
+			p3: this._p3.getObject(),
 		};
 	}
 }
-
-export = PrefRating;
