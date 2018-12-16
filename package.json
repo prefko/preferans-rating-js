@@ -1,13 +1,19 @@
 {
 	"name": "preferans-rating-js",
-	"version": "1.2.3",
+	"version": "2.0.0",
 	"description": "nodejs rating for preferans",
 	"engines": {
 		"node": ">=8.9"
 	},
 	"main": "lib/rating.js",
+	"files": [
+		"lib/**/*"
+	],
 	"scripts": {
-		"docs": "jsdoc README.md ./lib/ -r -a all -d docs",
+		"build": "tsc",
+		"lint": "tslint -p tsconfig.json",
+		"format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+		"docs": "jsdoc README.md ./src/ -r -a all -d docs",
 		"test": "nyc --reporter=lcov --reporter=html mocha",
 		"coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
 		"sonar": "sonarjs -e .sonarlint/**,node_modules/**,coverage/**,.nyc_output/**"
@@ -39,6 +45,10 @@
 		"coveralls": "^3.0.2",
 		"mocha": "^5.2.0",
 		"nyc": "^12.0.2",
-		"sonarjs": "^1.0.0"
+		"prettier": "^1.15.3",
+		"sonarjs": "^1.0.0",
+		"tslint": "^5.11.0",
+		"tslint-config-prettier": "^1.17.0",
+		"typescript": "^3.2.2"
 	}
 }
