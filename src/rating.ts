@@ -116,9 +116,9 @@ export default class PrefRating {
 	}
 
 	/** Getter.
-	 * @returns {Rating} Rating object
+	 * @returns {Rating} Rating as object
 	 */
-	getRatings(): any {
+	getObject(): any {
 		return {
 			bula: this._bula,
 			p1: this._p1.getObject(),
