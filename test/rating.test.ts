@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import PrefPlayer from '../src/player';
+import PrefRatingPlayer from '../src/ratingPlayer';
 import PrefRating from '../src/rating';
 
 describe("PrefRating tests", () => {
@@ -8,9 +8,9 @@ describe("PrefRating tests", () => {
 	});
 
 	describe("PrefRating constructor tests", () => {
-		const p1 = new PrefPlayer("p1", 1152, -238);
-		const p2 = new PrefPlayer("p1", 1074, 112);
-		const p3 = new PrefPlayer("p1", 986, 126);
+		const p1 = new PrefRatingPlayer("p1", 1152, -238);
+		const p2 = new PrefRatingPlayer("p1", 1074, 112);
+		const p3 = new PrefRatingPlayer("p1", 986, 126);
 		it("contructor should create object", () => {
 			expect(() => new PrefRating(p1, p2, p3, 60)).to.not.throw();
 			expect(new PrefRating(p1, p2, p3, 60)).to.be.a("object");
@@ -18,9 +18,9 @@ describe("PrefRating tests", () => {
 	});
 
 	describe("PrefRating calculation tests 1", () => {
-		const p1 = new PrefPlayer("p1", 1152, -238);
-		const p2 = new PrefPlayer("p2", 1074, 112);
-		const p3 = new PrefPlayer("p3", 986, 126);
+		const p1 = new PrefRatingPlayer("p1", 1152, -238);
+		const p2 = new PrefRatingPlayer("p2", 1074, 112);
+		const p3 = new PrefRatingPlayer("p3", 986, 126);
 		let rating = new PrefRating(p1, p2, p3, 60);
 		it("ratings.getObject() should create object", () => {
 			expect(rating.getObject()).to.be.a("object");
@@ -38,9 +38,9 @@ describe("PrefRating tests", () => {
 	});
 
 	describe("PrefRating calculation tests 2", () => {
-		const p1 = new PrefPlayer("p1", 986, 126);
-		const p2 = new PrefPlayer("p2", 1074, 112);
-		const p3 = new PrefPlayer("p3", 1152, -238);
+		const p1 = new PrefRatingPlayer("p1", 986, 126);
+		const p2 = new PrefRatingPlayer("p2", 1074, 112);
+		const p3 = new PrefRatingPlayer("p3", 1152, -238);
 		let rating = new PrefRating(p1, p2, p3, 60);
 
 		it("ratings.getObject() should work properly", () => {
@@ -56,9 +56,9 @@ describe("PrefRating tests", () => {
 	});
 
 	describe("PrefRating calculation tests 3", () => {
-		const p1 = new PrefPlayer("p1", 986, 120);
-		const p2 = new PrefPlayer("p2", 1074, 120);
-		const p3 = new PrefPlayer("p3", 1152, -240);
+		const p1 = new PrefRatingPlayer("p1", 986, 120);
+		const p2 = new PrefRatingPlayer("p2", 1074, 120);
+		const p3 = new PrefRatingPlayer("p3", 1152, -240);
 		let rating = new PrefRating(p1, p2, p3, 60);
 
 		it("ratings.getObject() should work properly", () => {
