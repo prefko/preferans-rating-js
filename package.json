@@ -1,6 +1,6 @@
 {
 	"name": "preferans-rating-js",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "nodejs rating for preferans",
 	"engines": {
 		"node": ">=8.9"
@@ -13,7 +13,7 @@
 		"build": "tsc",
 		"lint": "tslint -p tsconfig.json",
 		"format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-		"docs": "jsdoc README.md ./lib/ -r -a all -d docs",
+		"docs": "yarn build && jsdoc README.md ./lib/ -r -a all -d docs",
 		"test": "nyc --reporter=lcov --reporter=html mocha",
 		"coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
 		"sonar": "sonarjs -e .sonarlint/**,node_modules/**,coverage/**,.nyc_output/**"
