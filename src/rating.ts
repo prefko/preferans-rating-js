@@ -111,8 +111,6 @@ export default class PrefRating {
 		this._p1.change = change1;
 		this._p2.change = change2;
 		this._p3.change = change3;
-
-		return this;
 	}
 
 	/** Getter.

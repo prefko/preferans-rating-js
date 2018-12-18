@@ -25,8 +25,6 @@ export default class PrefPlayer {
 		this._rating = rating;
 		this._score = score;
 		this._change = 0;
-
-		return this;
 	}
 
 	get username(): string {
