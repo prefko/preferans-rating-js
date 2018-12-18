@@ -1,7 +1,8 @@
 .idea
 .sonarlint
+lib
 
-# Docs
+#Docs
 docs
 
 # Logs
