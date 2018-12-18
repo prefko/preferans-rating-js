@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-import PrefRating from "./rating";
+import PrefRating from "./prefRating";
 
 /**
  * @typedef {Object} PrefRatingPlayer

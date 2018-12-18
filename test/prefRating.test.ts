@@ -1,6 +1,6 @@
 import {expect} from 'chai';
-import PrefRatingPlayer from '../src/ratingPlayer';
-import PrefRating from '../src/rating';
+import PrefRatingPlayer from '../src/prefRatingPlayer';
+import PrefRating from '../src/prefRating';
 
 describe("PrefRating tests", () => {
 	it("PrefRating should exist", () => {

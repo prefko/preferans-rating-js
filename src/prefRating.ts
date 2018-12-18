@@ -16,7 +16,7 @@ import {Complex} from "mathjs";
 import {MathArray} from "mathjs";
 import {Matrix} from "mathjs";
 
-import PrefRatingPlayer from './ratingPlayer';
+import PrefRatingPlayer from './prefRatingPlayer';
 
 /** @constant
  * @type {number}
