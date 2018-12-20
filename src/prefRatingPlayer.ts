@@ -50,7 +50,7 @@ export default class PrefRatingPlayer {
 		this._rating += this._change;
 	}
 
-	public getObject(): any {
+	public getObject(): object {
 		return {
 			username: this.username,
 			score: this.score,
