@@ -1,7 +1,13 @@
 #!/usr/bin/env node
 'use strict';
 
-import PrefRating from "./prefRating";
+export type PrefRatingPlayerObject = {
+	username: string,
+	score: number,
+	rating: number,
+	change: number,
+	oldRating: number
+}
 
 /**
  * @typedef {Object} PrefRatingPlayer
@@ -9,12 +15,11 @@ import PrefRating from "./prefRating";
  * @property {number} score Score
  * @property {number} rating Rating
  */
-
 export default class PrefRatingPlayer {
-	private _username: string;
-	private _score: number;
+	readonly _username: string;
+	readonly _score: number;
 	private _rating: number;
-	private _change: number;
+	private _change = 0;
 
 	/** @constructor
 	 * @param {string} username - Username
@@ -26,7 +31,6 @@ export default class PrefRatingPlayer {
 		this._username = username;
 		this._rating = rating;
 		this._score = score;
-		this._change = 0;
 	}
 
 	get username(): string {
@@ -50,7 +54,7 @@ export default class PrefRatingPlayer {
 		this._rating += this._change;
 	}
 
-	public getObject(): any {
+	public getObject(): PrefRatingPlayerObject {
 		return {
 			username: this.username,
 			score: this.score,

@@ -1,6 +1,6 @@
 {
 	"name": "preferans-rating-js",
-	"version": "2.0.2",
+	"version": "2.0.3",
 	"description": "nodejs rating for preferans",
 	"engines": {
 		"node": ">=8.9"
