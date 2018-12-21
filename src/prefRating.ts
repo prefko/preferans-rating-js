@@ -107,8 +107,7 @@ export default class PrefRating {
 		this._p3 = p3;
 		this._bula = bula;
 
-		const changes: PrefRatingChanges = calculateChanges(p1, p2, p3, bula);
-		let {change1, change2, change3} = changes;
+		const {change1, change2, change3} = calculateChanges(p1, p2, p3, bula);
 		this._p1.change = change1;
 		this._p2.change = change2;
 		this._p3.change = change3;
