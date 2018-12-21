@@ -1,15 +1,6 @@
 #!/usr/bin/env node
 'use strict';
 
-import PrefRating from "./prefRating";
-
-/**
- * @typedef {Object} PrefRatingPlayer
- * @property {string} username Username
- * @property {number} score Score
- * @property {number} rating Rating
- */
-
 export type PrefRatingPlayerObject = {
 	username: string,
 	score: number,
@@ -18,6 +9,12 @@ export type PrefRatingPlayerObject = {
 	oldRating: number
 }
 
+/**
+ * @typedef {Object} PrefRatingPlayer
+ * @property {string} username Username
+ * @property {number} score Score
+ * @property {number} rating Rating
+ */
 export default class PrefRatingPlayer {
 	readonly _username: string;
 	readonly _score: number;

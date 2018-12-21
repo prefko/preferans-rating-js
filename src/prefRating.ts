@@ -1,14 +1,6 @@
 #!/usr/bin/env node
 'use strict';
 
-/**
- * @typedef {Object} Rating
- * @property {number} bula The game bula
- * @property {PrefRatingPlayer} p1 The 1st PrefRatingPlayer
- * @property {PrefRatingPlayer} p2 The 2nd PrefRatingPlayer
- * @property {PrefRatingPlayer} p3 The 3rd PrefRatingPlayer
- */
-
 import * as math from 'mathjs';
 import PrefRatingPlayer, {PrefRatingPlayerObject} from './prefRatingPlayer';
 
@@ -87,7 +79,13 @@ const calculateChanges = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRa
 	};
 };
 
-/** This is the Preferans Rating main class. */
+/** This is the Preferans Rating main class.
+ * @typedef {Object} PrefRating
+ * @property {number} bula The game bula
+ * @property {PrefRatingPlayer} p1 The 1st PrefRatingPlayer
+ * @property {PrefRatingPlayer} p2 The 2nd PrefRatingPlayer
+ * @property {PrefRatingPlayer} p3 The 3rd PrefRatingPlayer
+ */
 export default class PrefRating {
 	readonly _p1: PrefRatingPlayer;
 	readonly _p2: PrefRatingPlayer;
