@@ -89,10 +89,10 @@ const calculateChanges = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRa
 
 /** This is the Preferans Rating main class. */
 export default class PrefRating {
-	private _p1: PrefRatingPlayer;
-	private _p2: PrefRatingPlayer;
-	private _p3: PrefRatingPlayer;
-	private _bula: number;
+	readonly _p1: PrefRatingPlayer;
+	readonly _p2: PrefRatingPlayer;
+	readonly _p3: PrefRatingPlayer;
+	readonly _bula: number;
 
 	/** @constructor
 	 * @param {PrefRatingPlayer} p1 - 1st player object

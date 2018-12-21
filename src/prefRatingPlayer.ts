@@ -19,8 +19,8 @@ export type PrefRatingPlayerObject = {
 }
 
 export default class PrefRatingPlayer {
-	private _username: string;
-	private _score: number;
+	readonly _username: string;
+	readonly _score: number;
 	private _rating: number;
 	private _change = 0;
 
