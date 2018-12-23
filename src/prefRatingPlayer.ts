@@ -19,7 +19,7 @@ export default class PrefRatingPlayer {
 	readonly _username: string;
 	readonly _score: number;
 	private _rating: number;
-	private _change = 0;
+	private _change: number = 0;
 
 	/** @constructor
 	 * @param {string} username - Username
