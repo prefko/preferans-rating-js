@@ -1,14 +1,11 @@
 {
 	"name": "preferans-rating-js",
-	"version": "2.2.0",
+	"version": "2.2.1",
 	"description": "nodejs rating for preferans",
 	"engines": {
 		"node": ">=8.9"
 	},
 	"main": "lib/prefRating.js",
-	"files": [
-		"lib/**/*"
-	],
 	"scripts": {
 		"build": "tsc",
 		"build:watch": "tsc --watch",
@@ -21,6 +18,9 @@
 		"latest-interactive": "yarn upgrade-interactive --latest",
 		"latest": "yarn upgrade --latest"
 	},
+	"files": [
+		"lib/**/*"
+	],
 	"nyc": {
 		"include": [
 			"src/**/*.ts"
