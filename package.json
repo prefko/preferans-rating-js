@@ -1,11 +1,12 @@
 {
 	"name": "preferans-rating-js",
-	"version": "2.2.1",
+	"version": "2.2.2",
 	"description": "nodejs rating for preferans",
 	"engines": {
 		"node": ">=8.9"
 	},
-	"main": "lib/prefRating.js",
+	"main": "./lib/prefRating.js",
+	"types": "./lib/prefRating.d.ts",
 	"scripts": {
 		"build": "tsc",
 		"build:watch": "tsc --watch",
