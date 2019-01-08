@@ -3,3 +3,6 @@ logo: http://prefko.com/img/logo.gif
 title: preferans-rating-js
 description: preferans user rating
 show_downloads: "true"
+include:
+  - "_*_.html"
+  - "_*_.*.html"
