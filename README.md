@@ -1,3 +1,7 @@
+<a href="http://stojadinovic.net">
+  <img alt="Predrag Stojadinovic" src="https://en.stojadinovic.net/assets/images/logo-128x128-88.jpg" width="100">
+</a>
+
 # preferans-rating-js
 [![build status](https://img.shields.io/travis/cope/preferans-rating-js.svg?branch=master)](https://travis-ci.org/cope/preferans-rating-js)
 [![codacy](https://img.shields.io/codacy/grade/1877e4f84716402888fd97bd6c881d0f.svg)](https://www.codacy.com/project/cope/preferans-rating-js/dashboard)
@@ -6,6 +10,10 @@
 [![npm](https://img.shields.io/npm/dt/preferans-rating-js.svg)](https://www.npmjs.com/package/preferans-rating-js)
 
 preferans user rating
+
+### Documentation
+
+[TypeDoc documentation](https://prefko.github.io/preferans-rating-js/docs/)
 
 ### Usage
 
