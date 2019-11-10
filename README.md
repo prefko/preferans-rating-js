@@ -7,7 +7,7 @@
 [![codacy](https://img.shields.io/codacy/grade/1877e4f84716402888fd97bd6c881d0f.svg)](https://www.codacy.com/project/prefko/preferans-rating-js/dashboard)
 [![coverage](https://img.shields.io/coveralls/github/prefko/preferans-rating-js/master.svg)](https://coveralls.io/github/prefko/preferans-rating-js?branch=master)
 [![dependencies](https://david-dm.org/prefko/preferans-rating-js.svg)](https://www.npmjs.com/package/preferans-rating-js)
-[![npm](https://img.shields.io/npm/dt/preferans-rating-js.svg)](https://www.npmjs.com/package/preferans-rating-js)
+[![npm](https://img.shields.io/npm/dt/preferans-rating-js.svg)](https://www.npmjs.com/package/preferans-rating-js) [![Greenkeeper badge](https://badges.greenkeeper.io/prefko/preferans-rating-js.svg)](https://greenkeeper.io/)
 
 preferans user rating
 
