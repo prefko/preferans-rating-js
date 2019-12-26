@@ -1,6 +1,6 @@
 {
 	"name": "preferans-rating-js",
-	"version": "2.3.3",
+	"version": "2.3.4",
 	"description": "nodejs rating for preferans",
 	"engines": {
 		"node": ">=8.9"
@@ -65,19 +65,19 @@
 		"mathjs": "^6.2.3"
 	},
 	"devDependencies": {
-		"@types/chai": "^4.1.7",
-		"@types/mocha": "^5.2.5",
+		"@types/chai": "^4.2.7",
+		"@types/mocha": "^5.2.7",
 		"chai": "^4.2.0",
-		"coveralls": "^3.0.2",
-		"mocha": "^6.2.1",
+		"coveralls": "^3.0.9",
+		"mocha": "^6.2.2",
 		"nyc": "^14.1.1",
-		"prettier": "^1.16.4",
+		"prettier": "^1.19.1",
 		"sonarjs": "^1.0.0",
-		"source-map-support": "^0.5.10",
-		"ts-node": "^8.0.2",
-		"tslint": "^5.12.1",
+		"source-map-support": "^0.5.16",
+		"ts-node": "^8.5.4",
+		"tslint": "^5.20.1",
 		"tslint-config-prettier": "^1.18.0",
-		"typedoc": "^0.15.0",
-		"typescript": "^3.3.1"
+		"typedoc": "^0.15.5",
+		"typescript": "^3.7.4"
 	}
 }
