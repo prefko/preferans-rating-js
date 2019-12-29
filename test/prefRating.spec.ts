@@ -21,12 +21,12 @@ describe("PrefRating tests", () => {
 		const p1 = new PrefRatingPlayer("p1", 1152, -238);
 		const p2 = new PrefRatingPlayer("p2", 1074, 112);
 		const p3 = new PrefRatingPlayer("p3", 986, 126);
-		let rating = new PrefRating(p1, p2, p3, 60);
+		const rating = new PrefRating(p1, p2, p3, 60);
 		it("ratings.getObject() should create object", () => {
-			expect(rating.getObject()).to.be.a("object");
+			expect(rating.rating).to.be.a("object");
 		});
 		it("ratings.getObject() should work properly", () => {
-			expect(rating.getObject()).to.deep.equal(
+			expect(rating.rating).to.deep.equal(
 				{
 					bula: 60,
 					p1: {username: "p1", score: -238, oldRating: 1152, rating: 1142, change: -10},
@@ -41,10 +41,10 @@ describe("PrefRating tests", () => {
 		const p1 = new PrefRatingPlayer("p1", 986, 126);
 		const p2 = new PrefRatingPlayer("p2", 1074, 112);
 		const p3 = new PrefRatingPlayer("p3", 1152, -238);
-		let rating = new PrefRating(p1, p2, p3, 60);
+		const rating = new PrefRating(p1, p2, p3, 60);
 
 		it("ratings.getObject() should work properly", () => {
-			expect(rating.getObject()).to.deep.equal(
+			expect(rating.rating).to.deep.equal(
 				{
 					bula: 60,
 					p1: {username: "p1", score: 126, oldRating: 986, rating: 993, change: 7},
@@ -59,10 +59,10 @@ describe("PrefRating tests", () => {
 		const p1 = new PrefRatingPlayer("p1", 986, 120);
 		const p2 = new PrefRatingPlayer("p2", 1074, 120);
 		const p3 = new PrefRatingPlayer("p3", 1152, -240);
-		let rating = new PrefRating(p1, p2, p3, 60);
+		const rating = new PrefRating(p1, p2, p3, 60);
 
 		it("ratings.getObject() should work properly", () => {
-			expect(rating.getObject()).to.deep.equal(
+			expect(rating.rating).to.deep.equal(
 				{
 					bula: 60,
 					p1: {username: "p1", score: 120, oldRating: 986, rating: 993, change: 7},

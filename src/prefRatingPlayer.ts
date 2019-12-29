@@ -16,8 +16,8 @@ export type PrefRatingPlayerObject = {
  * @property {number} rating Rating
  */
 export default class PrefRatingPlayer {
-	readonly _username: string;
-	readonly _score: number;
+	private readonly _username: string;
+	private readonly _score: number;
 	private _rating: number;
 	private _change: number = 0;
 
@@ -54,7 +54,7 @@ export default class PrefRatingPlayer {
 		this._rating += this._change;
 	}
 
-	public getObject(): PrefRatingPlayerObject {
+	get json(): PrefRatingPlayerObject {
 		return {
 			username: this.username,
 			score: this.score,
