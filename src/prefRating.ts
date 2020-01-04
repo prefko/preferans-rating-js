@@ -77,6 +77,8 @@ const _calculateChanges = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefR
 	};
 };
 
+type PrefRatingPlayerInput = { username: string, rating: number, score: number }
+
 /** This is the Preferans Rating main class.
  * @typedef {Object} PrefRating
  * @property {number} bula The game bula
@@ -97,20 +99,20 @@ export default class PrefRating {
 	 * @param {number} bula - Game bula
 	 * @returns {object} PrefRating instance
 	 */
-	constructor(p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRatingPlayer, bula: number) {
-		this._p1 = p1;
-		this._p2 = p2;
-		this._p3 = p3;
+	constructor(p1: PrefRatingPlayerInput, p2: PrefRatingPlayerInput, p3: PrefRatingPlayerInput, bula: number) {
+		this._p1 = new PrefRatingPlayer(p1.username, p1.rating, p1.score);
+		this._p2 = new PrefRatingPlayer(p2.username, p2.rating, p2.score);
+		this._p3 = new PrefRatingPlayer(p3.username, p3.rating, p3.score);
 		this._bula = bula;
 
-		const {c1, c2, c3} = _calculateChanges(p1, p2, p3, bula);
+		const {c1, c2, c3} = _calculateChanges(this._p1, this._p2, this._p3, this._bula);
 		this._p1.change = c1;
 		this._p2.change = c2;
 		this._p3.change = c3;
 	}
 
 	/** Getter.
-	 * @returns {Rating} Rating as object
+	 * @returns {PrefRatingObject} Rating as object
 	 */
 	get rating(): PrefRatingObject {
 		return {

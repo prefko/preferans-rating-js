@@ -18,6 +18,7 @@ export type PrefRatingPlayerObject = {
 export default class PrefRatingPlayer {
 	private readonly _username: string;
 	private readonly _score: number;
+	private readonly _oldRating: number;
 	private _rating: number;
 	private _change: number = 0;
 
@@ -29,12 +30,9 @@ export default class PrefRatingPlayer {
 	 */
 	constructor(username: string, rating: number, score: number) {
 		this._username = username;
+		this._oldRating = rating;
 		this._rating = rating;
 		this._score = score;
-	}
-
-	get username(): string {
-		return this._username;
 	}
 
 	get score(): number {
@@ -45,22 +43,18 @@ export default class PrefRatingPlayer {
 		return this._rating;
 	}
 
-	get change(): number {
-		return this._change;
-	}
-
 	set change(change: number) {
 		this._change = change;
-		this._rating += this._change;
+		this._rating += change;
 	}
 
 	get json(): PrefRatingPlayerObject {
 		return {
-			username: this.username,
-			score: this.score,
-			rating: this.rating,
-			change: this.change,
-			oldRating: this.rating - this.change
+			username: this._username,
+			score: this._score,
+			rating: this._rating,
+			change: this._change,
+			oldRating: this._oldRating
 		}
 	}
 }

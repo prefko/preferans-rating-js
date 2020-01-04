@@ -1,6 +1,6 @@
 {
 	"name": "preferans-rating-js",
-	"version": "2.3.7",
+	"version": "2.3.8",
 	"description": "nodejs rating for preferans",
 	"engines": {
 		"node": ">=8.9"
@@ -62,7 +62,7 @@
 		"@types/lodash": "^4.14.149",
 		"@types/mathjs": "^6.0.2",
 		"lodash": "^4.17.15",
-		"mathjs": "^6.2.5"
+		"mathjs": "^6.3.0"
 	},
 	"devDependencies": {
 		"@types/chai": "^4.2.7",

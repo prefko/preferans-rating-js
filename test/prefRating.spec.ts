@@ -8,9 +8,9 @@ describe("PrefRating tests", () => {
 	});
 
 	describe("PrefRating constructor tests", () => {
-		const p1 = new PrefRatingPlayer("p1", 1152, -238);
-		const p2 = new PrefRatingPlayer("p1", 1074, 112);
-		const p3 = new PrefRatingPlayer("p1", 986, 126);
+		const p1 = {username: "p1", rating: 1152, score: -238};
+		const p2 = {username: "p2", rating: 1074, score: 112};
+		const p3 = {username: "p3", rating: 986, score: 126};
 		it("contructor should create object", () => {
 			expect(() => new PrefRating(p1, p2, p3, 60)).to.not.throw();
 			expect(new PrefRating(p1, p2, p3, 60)).to.be.a("object");
@@ -18,9 +18,9 @@ describe("PrefRating tests", () => {
 	});
 
 	describe("PrefRating calculation tests 1", () => {
-		const p1 = new PrefRatingPlayer("p1", 1152, -238);
-		const p2 = new PrefRatingPlayer("p2", 1074, 112);
-		const p3 = new PrefRatingPlayer("p3", 986, 126);
+		const p1 = {username: "p1", rating: 1152, score: -238};
+		const p2 = {username: "p2", rating: 1074, score: 112};
+		const p3 = {username: "p3", rating: 986, score: 126};
 		const rating = new PrefRating(p1, p2, p3, 60);
 		it("ratings.getObject() should create object", () => {
 			expect(rating.rating).to.be.a("object");
@@ -38,9 +38,9 @@ describe("PrefRating tests", () => {
 	});
 
 	describe("PrefRating calculation tests 2", () => {
-		const p1 = new PrefRatingPlayer("p1", 986, 126);
-		const p2 = new PrefRatingPlayer("p2", 1074, 112);
-		const p3 = new PrefRatingPlayer("p3", 1152, -238);
+		const p1 = {username: "p1", rating: 986, score: 126};
+		const p2 = {username: "p2", rating: 1074, score: 112};
+		const p3 = {username: "p3", rating: 1152, score: -238};
 		const rating = new PrefRating(p1, p2, p3, 60);
 
 		it("ratings.getObject() should work properly", () => {
@@ -56,9 +56,9 @@ describe("PrefRating tests", () => {
 	});
 
 	describe("PrefRating calculation tests 3", () => {
-		const p1 = new PrefRatingPlayer("p1", 986, 120);
-		const p2 = new PrefRatingPlayer("p2", 1074, 120);
-		const p3 = new PrefRatingPlayer("p3", 1152, -240);
+		const p1 = {username: "p1", rating: 986, score: 120};
+		const p2 = {username: "p2", rating: 1074, score: 120};
+		const p3 = {username: "p3", rating: 1152, score: -240};
 		const rating = new PrefRating(p1, p2, p3, 60);
 
 		it("ratings.getObject() should work properly", () => {
