@@ -1,6 +1,6 @@
 {
 	"name": "preferans-rating-js",
-	"version": "2.3.8",
+	"version": "2.4.0",
 	"description": "nodejs rating for preferans",
 	"engines": {
 		"node": ">=8.9"
@@ -8,10 +8,11 @@
 	"main": "./lib/prefRating.js",
 	"types": "./lib/prefRating.d.ts",
 	"scripts": {
-		"all": "yarn & yarn build & yarn test & yarn docs",
+		"all": "yarn & yarn clean & yarn build & yarn test & yarn docs",
 		"build": "del /S /Q lib\\* && tsc",
 		"build:watch": "tsc --watch",
 		"lint": "tslint -p tsconfig.json",
+		"clean": "tslint --config tslint-imports.json --fix --project .",
 		"format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
 		"docs": "typedoc --readme none --out docs src",
 		"test": "nyc mocha -r ts-node/register test/**/*.spec.ts",
@@ -77,6 +78,7 @@
 		"ts-node": "^8.5.4",
 		"tslint": "^5.20.1",
 		"tslint-config-prettier": "^1.18.0",
+		"tslint-etc": "^1.10.0",
 		"tslint-no-unused-expression-chai": "^0.1.4",
 		"typedoc": "^0.15.6",
 		"typescript": "^3.7.4"
