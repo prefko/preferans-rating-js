@@ -1062,9 +1062,10 @@ marked@^0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.8.0.tgz#ec5c0c9b93878dc52dd54be8d0e524097bd81a99"
 
-mathjs@^6.3.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-6.4.0.tgz#9af4bd1d1a0fbc1f294c0eaf0840fcd50bd9426b"
+mathjs@^6.5.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-6.5.0.tgz#f5c7cfdedb7110c113e316606924591d9b694088"
+  integrity sha512-QhOJiswL8W7UBS2tYm9i1BQLK6EQWdCI38/m65fttNDfT+RZV5iw8s/sm+i1HmA4P+NFzg7DoyMGfaQmwYRPpA==
   dependencies:
     complex.js "2.0.11"
     decimal.js "10.2.0"
