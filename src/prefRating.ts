@@ -2,11 +2,12 @@
 'use strict';
 
 import * as math from 'mathjs';
-import PrefRatingPlayer, {PrefRatingPlayerObject} from './prefRatingPlayer';
 
-export type PrefRatingCalc = { a12: number, a13: number, a23: number }
-export type PrefRatingChanges = { c1: number, c2: number, c3: number }
-export type PrefRatingObject = { bula: number, p1: PrefRatingPlayerObject, p2: PrefRatingPlayerObject, p3: PrefRatingPlayerObject }
+import PrefRatingPlayer from './prefRatingPlayer';
+import {TPrefRatingObject, TPrefRatingPlayerInput, PrefRatingPlayerObject} from "./prefRating.types";
+
+type _TPrefRatingCalc = { a12: number, a13: number, a23: number }
+type _TPrefRatingChanges = { c1: number, c2: number, c3: number }
 
 /**
  * @constant
@@ -24,7 +25,7 @@ const _calcD = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, bula: number): numbe
 			.done(),
 		3,
 	));
-const _calculateDs = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRatingPlayer, bula: number): PrefRatingCalc => ({
+const _calculateDs = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRatingPlayer, bula: number): _TPrefRatingCalc => ({
 	a12: _calcD(p1, p2, bula),
 	a13: _calcD(p1, p3, bula),
 	a23: _calcD(p2, p3, bula),
@@ -40,14 +41,14 @@ const _calcT = (p1: PrefRatingPlayer, p2: PrefRatingPlayer): number =>
 			.done(),
 		3,
 	));
-const _calculateTs = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRatingPlayer): PrefRatingCalc => ({
+const _calculateTs = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRatingPlayer): _TPrefRatingCalc => ({
 	a12: _calcT(p1, p2),
 	a13: _calcT(p1, p3),
 	a23: _calcT(p2, p3),
 });
 
 const _calcN = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, bula: number): number => (p1.score > p2.score ? bula : p1.score < p2.score ? -bula : 0) / 100;
-const _calculateNs = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRatingPlayer, bula: number): PrefRatingCalc => ({
+const _calculateNs = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRatingPlayer, bula: number): _TPrefRatingCalc => ({
 	a12: _calcN(p1, p2, bula),
 	a13: _calcN(p1, p3, bula),
 	a23: _calcN(p2, p3, bula),
@@ -61,10 +62,10 @@ const _calcC = (c1: number, c2: number): number =>
 			.divide(2)
 			.done(),
 	));
-const _calculateChanges = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRatingPlayer, bula: number): PrefRatingChanges => {
-	const D: PrefRatingCalc = _calculateDs(p1, p2, p3, bula);
-	const T: PrefRatingCalc = _calculateTs(p1, p2, p3);
-	const N: PrefRatingCalc = _calculateNs(p1, p2, p3, bula);
+const _calculateChanges = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRatingPlayer, bula: number): _TPrefRatingChanges => {
+	const D: _TPrefRatingCalc = _calculateDs(p1, p2, p3, bula);
+	const T: _TPrefRatingCalc = _calculateTs(p1, p2, p3);
+	const N: _TPrefRatingCalc = _calculateNs(p1, p2, p3, bula);
 
 	const C12 = D.a12 + T.a12 + N.a12;
 	const C13 = D.a13 + T.a13 + N.a13;
@@ -77,7 +78,7 @@ const _calculateChanges = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefR
 	};
 };
 
-type PrefRatingPlayerInput = { username: string, rating: number, score: number }
+export {TPrefRatingObject, TPrefRatingPlayerInput, PrefRatingPlayerObject}
 
 /** This is the Preferans Rating main class.
  * @typedef {Object} PrefRating
@@ -99,7 +100,7 @@ export default class PrefRating {
 	 * @param {number} bula - Game bula
 	 * @returns {object} PrefRating instance
 	 */
-	constructor(p1: PrefRatingPlayerInput, p2: PrefRatingPlayerInput, p3: PrefRatingPlayerInput, bula: number) {
+	constructor(p1: TPrefRatingPlayerInput, p2: TPrefRatingPlayerInput, p3: TPrefRatingPlayerInput, bula: number) {
 		this._p1 = new PrefRatingPlayer(p1.username, p1.rating, p1.score);
 		this._p2 = new PrefRatingPlayer(p2.username, p2.rating, p2.score);
 		this._p3 = new PrefRatingPlayer(p3.username, p3.rating, p3.score);
@@ -112,9 +113,9 @@ export default class PrefRating {
 	}
 
 	/** Getter.
-	 * @returns {PrefRatingObject} Rating as object
+	 * @returns {TPrefRatingObject} Rating as object
 	 */
-	get rating(): PrefRatingObject {
+	get rating(): TPrefRatingObject {
 		return {
 			bula: this._bula,
 			p1: this._p1.json,

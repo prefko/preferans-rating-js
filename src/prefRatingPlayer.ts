@@ -1,13 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-export type PrefRatingPlayerObject = {
-	username: string,
-	score: number,
-	rating: number,
-	change: number,
-	oldRating: number
-}
+import {PrefRatingPlayerObject} from "./prefRating.types";
 
 /**
  * @typedef {Object} PrefRatingPlayer
