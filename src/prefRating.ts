@@ -1,13 +1,12 @@
-#!/usr/bin/env node
 'use strict';
 
 import * as math from 'mathjs';
 
 import PrefRatingPlayer from './prefRatingPlayer';
-import {TPrefRatingObject, TPrefRatingPlayerInput, PrefRatingPlayerObject} from "./prefRating.types";
+import {TPrefRatingObject, TPrefRatingPlayerInput, PrefRatingPlayerObject} from './prefRating.types';
 
-type _TPrefRatingCalc = { a12: number, a13: number, a23: number }
-type _TPrefRatingChanges = { c1: number, c2: number, c3: number }
+type _TPrefRatingCalc = {a12: number; a13: number; a23: number};
+type _TPrefRatingChanges = {c1: number; c2: number; c3: number};
 
 /**
  * @constant
@@ -16,52 +15,28 @@ type _TPrefRatingChanges = { c1: number, c2: number, c3: number }
  */
 const MAGIC = 2.8;
 
-const _calcD = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, bula: number): number =>
-	Number(math.round(
-		math
-			.chain(p1.score)
-			.subtract(p2.score)
-			.divide(bula)
-			.done(),
-		3,
-	));
+const _calcD = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, bula: number): number => Number(math.round(math.chain(p1.score).subtract(p2.score).divide(bula).done(), 3));
 const _calculateDs = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRatingPlayer, bula: number): _TPrefRatingCalc => ({
 	a12: _calcD(p1, p2, bula),
 	a13: _calcD(p1, p3, bula),
-	a23: _calcD(p2, p3, bula),
+	a23: _calcD(p2, p3, bula)
 });
 
-const _calcT = (p1: PrefRatingPlayer, p2: PrefRatingPlayer): number =>
-	Number(math.round(
-		math
-			.chain(p2.rating)
-			.subtract(p1.rating)
-			.multiply(MAGIC)
-			.divide(100)
-			.done(),
-		3,
-	));
+const _calcT = (p1: PrefRatingPlayer, p2: PrefRatingPlayer): number => Number(math.round(math.chain(p2.rating).subtract(p1.rating).multiply(MAGIC).divide(100).done(), 3));
 const _calculateTs = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRatingPlayer): _TPrefRatingCalc => ({
 	a12: _calcT(p1, p2),
 	a13: _calcT(p1, p3),
-	a23: _calcT(p2, p3),
+	a23: _calcT(p2, p3)
 });
 
 const _calcN = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, bula: number): number => (p1.score > p2.score ? bula : p1.score < p2.score ? -bula : 0) / 100;
 const _calculateNs = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRatingPlayer, bula: number): _TPrefRatingCalc => ({
 	a12: _calcN(p1, p2, bula),
 	a13: _calcN(p1, p3, bula),
-	a23: _calcN(p2, p3, bula),
+	a23: _calcN(p2, p3, bula)
 });
 
-const _calcC = (c1: number, c2: number): number =>
-	Number(math.round(
-		math
-			.chain(c1)
-			.add(c2)
-			.divide(2)
-			.done(),
-	));
+const _calcC = (c1: number, c2: number): number => Number(math.round(math.chain(c1).add(c2).divide(2).done()));
 const _calculateChanges = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefRatingPlayer, bula: number): _TPrefRatingChanges => {
 	const D: _TPrefRatingCalc = _calculateDs(p1, p2, p3, bula);
 	const T: _TPrefRatingCalc = _calculateTs(p1, p2, p3);
@@ -74,11 +49,11 @@ const _calculateChanges = (p1: PrefRatingPlayer, p2: PrefRatingPlayer, p3: PrefR
 	return {
 		c1: _calcC(C12, C13),
 		c2: _calcC(-C12, C23),
-		c3: _calcC(-C13, -C23),
+		c3: _calcC(-C13, -C23)
 	};
 };
 
-export {TPrefRatingObject, TPrefRatingPlayerInput, PrefRatingPlayerObject}
+export {TPrefRatingObject, TPrefRatingPlayerInput, PrefRatingPlayerObject};
 
 /** This is the Preferans Rating main class.
  * @typedef {Object} PrefRating
@@ -120,7 +95,7 @@ export default class PrefRating {
 			bula: this._bula,
 			p1: this._p1.json,
 			p2: this._p2.json,
-			p3: this._p3.json,
+			p3: this._p3.json
 		};
 	}
 }

@@ -1,7 +1,6 @@
-#!/usr/bin/env node
 'use strict';
 
-import {PrefRatingPlayerObject} from "./prefRating.types";
+import {PrefRatingPlayerObject} from './prefRating.types';
 
 /**
  * @typedef {Object} PrefRatingPlayer
@@ -49,6 +48,6 @@ export default class PrefRatingPlayer {
 			rating: this._rating,
 			change: this._change,
 			oldRating: this._oldRating
-		}
+		};
 	}
 }
