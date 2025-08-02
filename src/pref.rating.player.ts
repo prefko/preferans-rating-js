@@ -1,13 +1,7 @@
 'use strict';
 
-import {PrefRatingPlayerObject} from './prefRating.types';
+import {PrefRatingPlayerObject} from './pref.rating.types';
 
-/**
- * @typedef {Object} PrefRatingPlayer
- * @property {string} username Username
- * @property {number} score Score
- * @property {number} rating Rating
- */
 export default class PrefRatingPlayer {
 	private readonly _username: string;
 	private readonly _score: number;
@@ -15,12 +9,6 @@ export default class PrefRatingPlayer {
 	private _rating: number;
 	private _change: number = 0;
 
-	/** @constructor
-	 * @param {string} username - Username
-	 * @param {number} score - Score
-	 * @param {number} rating - Rating
-	 * @returns {object} PrefRatingPlayer instance
-	 */
 	constructor(username: string, rating: number, score: number) {
 		this._username = username;
 		this._oldRating = rating;

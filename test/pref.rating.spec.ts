@@ -1,8 +1,8 @@
 'use strict';
 
-import PrefRating from '../src/prefRating';
+import PrefRating from '../src/pref.rating';
 
-describe('PrefRating tests', () => {
+describe('pref.rating tests', () => {
 	it('PrefRating should exist', () => {
 		expect(PrefRating).toBeDefined();
 	});
